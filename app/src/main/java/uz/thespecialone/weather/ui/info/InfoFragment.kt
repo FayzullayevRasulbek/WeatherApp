@@ -37,7 +37,7 @@ class InfoFragment : Fragment(), InfoView {
     private lateinit var compositeDisposable: CompositeDisposable
     private lateinit var adapter: WeatherRecyclerViewAdapter
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         compositeDisposable = CompositeDisposable()
         presenter = InfoPresenterImpl(compositeDisposable, this)

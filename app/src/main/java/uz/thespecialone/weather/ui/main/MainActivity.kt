@@ -57,18 +57,16 @@ class MainActivity : AppCompatActivity(), MainView {
     private fun initLocationListener() {
         locationManager = applicationContext.getSystemService(LOCATION_SERVICE) as LocationManager
         listener = object : LocationListener {
-            override fun onLocationChanged(location: Location?) {
-                if (location != null) {
-                    Log.d("MAIN_TAG", "onLocationChanged")
-                    presenter.loadData()
-                    presenter.loadLocationData(location)
-                    locationManager.removeUpdates(listener)
-                } else Log.d("MAIN_TAG", "onLocationChanged location = null")
+            override fun onLocationChanged(location: Location) {
+                Log.d("MAIN_TAG", "onLocationChanged")
+                presenter.loadData()
+                presenter.loadLocationData(location)
+                locationManager.removeUpdates(listener)
             }
 
             override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
-            override fun onProviderEnabled(provider: String?) {}
-            override fun onProviderDisabled(provider: String?) {}
+            override fun onProviderEnabled(provider: String) {}
+            override fun onProviderDisabled(provider: String) {}
         }
     }
 
